@@ -37,7 +37,24 @@ button.addEventListener("click", () => {
 	}
 })
 
+/**
+ * From Stack Overflow
+ */
+function getRandomColor() {
+	let	letters = '0123456789ABCDEF';
+	let	color = '#';
+	for (let i = 0; i < 6; i++) {
+	  color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
+}
+  
 container.addEventListener("mousemove", (e) => {
 	let	currGrid = e.target;
-	currGrid.style["background-color"] = "blue";
+	currGrid.style["background-color"] = getRandomColor();	
+	let opacityVal = Number(currGrid.style["opacity"]);
+	if (opacityVal)
+		currGrid.style["opacity"] = String(opacityVal + 0.1);
+	else
+		currGrid.style["opacity"] = 0.1;
 });
